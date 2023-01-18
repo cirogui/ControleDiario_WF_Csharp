@@ -27,9 +27,12 @@ namespace ControleDiario.Views
 
         private void save()
         {
+
+
+
             try
             {
-                if (cbTipo.Text == "" ^ tbDesc.Text == "" ^ cbPeso.Text == "")
+                 if (cbTipo.Text != "" ^ tbDesc.Text != "" ^ cbPeso.Text != "")
                 {
                     cadastro.Data = dtPicker.Value;
                     cadastro.Tipo = cbTipo.Text;
@@ -63,13 +66,18 @@ namespace ControleDiario.Views
                     MessageBox.Show("Preencha todos os elementos");
                 }
                 
-            }
+            } 
             catch (Exception ex)
             {
                 MessageBox.Show("Não inserido" + ex);
             }
             
-          
+
+        }
+
+        private void frmCad_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

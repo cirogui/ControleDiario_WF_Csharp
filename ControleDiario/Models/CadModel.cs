@@ -14,5 +14,14 @@ namespace ControleDiario.Models
         {
             return new CadController().Insert(cadastro);    
         }
+
+        public List<Control> ToList(Control cadastro)
+        {
+            return new CadController().ToList(cadastro);
+        }        
+        public List<Control> ToListAll()
+        {
+            return new CadController().ToListAll();
+        }
     }
 }

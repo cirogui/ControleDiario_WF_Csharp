@@ -129,6 +129,7 @@
             this.Controls.Add(this.dtPicker);
             this.Name = "frmCad";
             this.Text = "Cadastrar Hábito/Tarefa";
+            this.Load += new System.EventHandler(this.frmCad_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

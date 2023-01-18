@@ -69,6 +69,12 @@
     <Compile Include="Views\frmEdit.Designer.cs">
       <DependentUpon>frmEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\frmMark.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmMark.Designer.cs">
+      <DependentUpon>frmMark.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
     </EmbeddedResource>
@@ -86,6 +92,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\frmEdit.resx">
       <DependentUpon>frmEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frmMark.resx">
+      <DependentUpon>frmMark.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

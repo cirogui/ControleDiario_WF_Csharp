@@ -28,85 +28,128 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.cbPeso = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.lb2 = new System.Windows.Forms.Label();
+            this.tbDesc = new System.Windows.Forms.TextBox();
+            this.cbTipo = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.dtPicker = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
+            // 
+            // cbPeso
+            // 
+            this.cbPeso.FormattingEnabled = true;
+            this.cbPeso.Items.AddRange(new object[] {
+            "Pouco importante",
+            "Importante",
+            "Muito importante"});
+            this.cbPeso.Location = new System.Drawing.Point(78, 121);
+            this.cbPeso.Name = "cbPeso";
+            this.cbPeso.Size = new System.Drawing.Size(121, 21);
+            this.cbPeso.TabIndex = 16;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(14, 129);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(65, 13);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "Importância:";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 172);
+            this.button1.Location = new System.Drawing.Point(17, 163);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 11;
+            this.button1.Size = new System.Drawing.Size(153, 23);
+            this.button1.TabIndex = 14;
             this.button1.Text = "Salvar";
             this.button1.UseVisualStyleBackColor = true;
+            // 
+            // lb2
+            // 
+            this.lb2.AutoSize = true;
+            this.lb2.Location = new System.Drawing.Point(14, 93);
+            this.lb2.Name = "lb2";
+            this.lb2.Size = new System.Drawing.Size(58, 13);
+            this.lb2.TabIndex = 13;
+            this.lb2.Text = "Descrição:";
+            // 
+            // tbDesc
+            // 
+            this.tbDesc.Location = new System.Drawing.Point(78, 86);
+            this.tbDesc.Name = "tbDesc";
+            this.tbDesc.Size = new System.Drawing.Size(234, 20);
+            this.tbDesc.TabIndex = 12;
+            // 
+            // cbTipo
+            // 
+            this.cbTipo.FormattingEnabled = true;
+            this.cbTipo.Items.AddRange(new object[] {
+            "Hábito",
+            "Tarefa"});
+            this.cbTipo.Location = new System.Drawing.Point(49, 53);
+            this.cbTipo.Name = "cbTipo";
+            this.cbTipo.Size = new System.Drawing.Size(121, 21);
+            this.cbTipo.TabIndex = 11;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 19);
+            this.label1.Location = new System.Drawing.Point(14, 61);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 13);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "Descrição:";
+            this.label1.Size = new System.Drawing.Size(31, 13);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Tipo:";
             // 
-            // radioButton1
+            // dtPicker
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(15, 80);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(114, 17);
-            this.radioButton1.TabIndex = 14;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Feito integralmente";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.dtPicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtPicker.Location = new System.Drawing.Point(49, 14);
+            this.dtPicker.Name = "dtPicker";
+            this.dtPicker.Size = new System.Drawing.Size(113, 20);
+            this.dtPicker.TabIndex = 9;
+            this.dtPicker.Value = new System.DateTime(2023, 1, 12, 0, 0, 0, 0);
             // 
-            // radioButton2
+            // label3
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(15, 103);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(111, 17);
-            this.radioButton2.TabIndex = 15;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Feito parcialmente";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(14, 20);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(33, 13);
+            this.label3.TabIndex = 17;
+            this.label3.Text = "Data:";
             // 
-            // radioButton3
+            // button2
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(15, 126);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(68, 17);
-            this.radioButton3.TabIndex = 16;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Não feito";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(15, 35);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(247, 20);
-            this.textBox1.TabIndex = 17;
+            this.button2.Location = new System.Drawing.Point(176, 163);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(136, 23);
+            this.button2.TabIndex = 18;
+            this.button2.Text = "Cancelar";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // frmEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(274, 233);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.radioButton3);
-            this.Controls.Add(this.radioButton2);
-            this.Controls.Add(this.radioButton1);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(328, 207);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.cbPeso);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.lb2);
+            this.Controls.Add(this.tbDesc);
+            this.Controls.Add(this.cbTipo);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.dtPicker);
             this.Name = "frmEdit";
-            this.Text = "frmEdit";
+            this.Text = "Edit";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -114,11 +157,15 @@
 
         #endregion
 
+        private System.Windows.Forms.ComboBox cbPeso;
+        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lb2;
+        private System.Windows.Forms.TextBox tbDesc;
+        private System.Windows.Forms.ComboBox cbTipo;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.DateTimePicker dtPicker;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button button2;
     }
 }
