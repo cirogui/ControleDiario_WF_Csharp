@@ -68,7 +68,8 @@ namespace ControleDiario.Controllers
                 return list;
             }
 
-        }public List<Control> ToListAll ()
+        }
+        public List<Control> ToListAll ()
         {
             using (SqlConnection con = new SqlConnection())
             {
@@ -100,6 +101,27 @@ namespace ControleDiario.Controllers
                 return list;
             }
 
+        }
+        public int Update(Control cadastro)
+        {
+            using (SqlConnection con = new SqlConnection())
+            {
+                con.ConnectionString = Properties.Settings.Default.Setting;
+                SqlCommand cn = new SqlCommand();
+                cn.CommandType = CommandType.Text;
+                con.Open();
+                cn.CommandText = "UPDATE registros3 SET data = @data, tipo = @tipo, peso = @peso, descricao = @descricao, feito = @feito WHERE id = @id";
+                cn.Parameters.Add("data", SqlDbType.DateTime).Value = cadastro.Data;
+                cn.Parameters.Add("tipo", SqlDbType.VarChar).Value = cadastro.Tipo;
+                cn.Parameters.Add("peso", SqlDbType.Int).Value = cadastro.Peso;
+                cn.Parameters.Add("descricao", SqlDbType.VarChar).Value = cadastro.Descricao;
+                cn.Parameters.Add("feito", SqlDbType.Float).Value = cadastro.Feito;
+                cn.Parameters.Add("id", SqlDbType.Int).Value = cadastro.Id;
+                cn.Connection = con;
+
+                int qtd = cn.ExecuteNonQuery();
+                return qtd;
+            }
         }
     }
 }

@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,6 +20,7 @@ namespace ControleDiario
         public Principal()
         {
             InitializeComponent();
+            dtPrincipal.Value = DateTime.Today;
             ToList();
         }
 
@@ -70,11 +72,68 @@ namespace ControleDiario
         {
 
         }
+        private void dgPrincipal_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btEdit.Enabled = true;
+            btMark.Enabled = true;
+            btDelete.Enabled = true;
 
+
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             frmMark frmM = new frmMark();
             frmM.ShowDialog();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+           dgPrincipal.ReadOnly = false;
+
+        }
+
+        private void dgPrincipal_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            btEdit.Visible = false;
+            btSave.Visible = true;
+        }
+
+        private void btSave_Click(object sender, EventArgs e)
+        {
+            btSave.Visible = false;
+            btEdit.Visible = true;
+            
+            Update();
+            cadastro.Data = dtPrincipal.Value;
+            ToList();
+
+
+        }
+
+        private void Update()
+        {
+            try
+            {
+                cadastro.Id = Convert.ToInt32(dgPrincipal.CurrentRow.Cells[0].Value);
+                cadastro.Data = (DateTime)dgPrincipal.CurrentRow.Cells[1].Value;
+                cadastro.Tipo = Convert.ToString(dgPrincipal.CurrentRow.Cells[2].Value);
+                cadastro.Peso = Convert.ToInt32(dgPrincipal.CurrentRow.Cells[3].Value);
+                cadastro.Descricao = Convert.ToString(dgPrincipal.CurrentRow.Cells[4].Value);
+                cadastro.Feito = Convert.ToInt32(dgPrincipal.CurrentRow.Cells[5].Value);
+                int y = CadModel.Update(cadastro);
+                if (y > 0)
+                {
+                    MessageBox.Show("Atualizado com sucesso!");
+                } else
+                {
+                    MessageBox.Show("Não inserido!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Não inserido" + ex);
+            }
         }
     }
 }

@@ -63,12 +63,6 @@
     <Compile Include="Views\frmCad.Designer.cs">
       <DependentUpon>frmCad.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\frmEdit.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\frmEdit.Designer.cs">
-      <DependentUpon>frmEdit.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\frmMark.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,9 +83,6 @@
     </Compile>
     <EmbeddedResource Include="Views\frmCad.resx">
       <DependentUpon>frmCad.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\frmEdit.resx">
-      <DependentUpon>frmEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\frmMark.resx">
       <DependentUpon>frmMark.cs</DependentUpon>
