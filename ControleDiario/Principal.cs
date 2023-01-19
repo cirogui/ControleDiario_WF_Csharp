@@ -10,6 +10,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 using Control = ControleDiario.Entities.Control;
 
 namespace ControleDiario
@@ -84,6 +85,8 @@ namespace ControleDiario
         {
             frmMark frmM = new frmMark();
             frmM.ShowDialog();
+            Mark();
+            ToList();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -134,6 +137,30 @@ namespace ControleDiario
             {
                 MessageBox.Show("Não inserido" + ex);
             }
+        }
+        private void Mark()
+        {
+            try
+            {
+
+                cadastro.Feito = frmMark.done;
+                cadastro.Id = Convert.ToInt32(dgPrincipal.CurrentRow.Cells[0].Value);
+
+                int z = CadModel.Mark(cadastro);
+                if (z > 0)
+                {
+                    MessageBox.Show("Marked!");
+                }
+                else
+                {
+                    MessageBox.Show("Error!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error" + ex);
+            }
+
         }
     }
 }

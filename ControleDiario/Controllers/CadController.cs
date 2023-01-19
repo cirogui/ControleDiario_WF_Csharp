@@ -123,5 +123,23 @@ namespace ControleDiario.Controllers
                 return qtd;
             }
         }
+
+        public int Mark(Control cadastro)
+        {
+            using (SqlConnection con = new SqlConnection())
+            {
+                con.ConnectionString = Properties.Settings.Default.Setting;
+                SqlCommand cn = new SqlCommand();
+                cn.CommandType = CommandType.Text;
+                con.Open();
+                cn.CommandText = "UPDATE registros3 SET feito = @feito WHERE id = @id";
+                cn.Parameters.Add("feito", SqlDbType.Float).Value = cadastro.Feito;
+                cn.Parameters.Add("id", SqlDbType.Int).Value = cadastro.Id;
+                cn.Connection = con;
+
+                int qtd = cn.ExecuteNonQuery();
+                return qtd;
+            }
+        }
     }
 }

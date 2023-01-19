@@ -28,5 +28,9 @@ namespace ControleDiario.Models
         {
             return new CadController().Update(cadastro);
         }
+        public static int Mark(Control cadastro)
+        {
+            return new CadController().Mark(cadastro);
+        }
     }
 }
