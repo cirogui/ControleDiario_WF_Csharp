@@ -19,10 +19,12 @@ namespace ControleDiario.Views
         public frmCad()
         {
             InitializeComponent();
+            dtPicker.Value = DateTime.Today;
         }
         private void button1_Click(object sender, EventArgs e)
         {
             save();
+            this.Close();
         }
 
         private void save()
@@ -34,42 +36,29 @@ namespace ControleDiario.Views
             {
                  if (cbTipo.Text != "" ^ tbDesc.Text != "" ^ cbPeso.Text != "")
                 {
-                    cadastro.Data = dtPicker.Value;
-                    cadastro.Tipo = cbTipo.Text;
-                    cadastro.Descricao = tbDesc.Text;
-                    switch (cbPeso.Text)
-                    {
-                        case "Pouco importante": cadastro.Peso = 1;
-                            break;
-
-                        case "Importante": cadastro.Peso = 2;
-                            break;
-
-                        case "Muito importante": cadastro.Peso = 3;
-                            break;
-
-                        default: cadastro.Peso =  0;
-                            break;
-                    }
-                    cadastro.Feito = 0;
+                    cadastro.Date = dtPicker.Value;
+                    cadastro.Type = cbTipo.Text;
+                    cadastro.Description = tbDesc.Text;
+                    cadastro.Importance = cbPeso.Text;
+                    cadastro.Done = "Un done";
                     int x = CadModel.Insert(cadastro);
                     if (x > 0)
                     {
-                        MessageBox.Show("Cadastrado com sucesso!");
+                        MessageBox.Show("Added");
                     }
                     else
                     {
-                        MessageBox.Show("Não inserido");
+                        MessageBox.Show("Error");
                     }
                 } else
                 {
-                    MessageBox.Show("Preencha todos os elementos");
+                    MessageBox.Show("Fill all the elements!");
                 }
                 
             } 
             catch (Exception ex)
             {
-                MessageBox.Show("Não inserido" + ex);
+                MessageBox.Show("Error" + ex);
             }
             
 
@@ -78,6 +67,11 @@ namespace ControleDiario.Views
         private void frmCad_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

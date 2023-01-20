@@ -23,11 +23,12 @@ namespace ControleDiario
             InitializeComponent();
             dtPrincipal.Value = DateTime.Today;
             ToList();
+            Count();
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            cadastro.Data = dtPrincipal.Value;
+            cadastro.Date = dtPrincipal.Value;
             ToList();
         }
 
@@ -35,7 +36,7 @@ namespace ControleDiario
         {
             try
             {
-                cadastro.Data = dtPrincipal.Value;
+                cadastro.Date = dtPrincipal.Value;
                 List<Control> list = new List<Control>();
                 list = new CadModel().ToList(cadastro);               
                 dgPrincipal.DataSource = list;
@@ -45,24 +46,10 @@ namespace ControleDiario
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Não foi possível listar" + ex);
+                MessageBox.Show("Error listing" + ex);
             }
         }
-        /* private void ToListAll()
-        {
-            try
-            {
-                List<Control> list = new List<Control>();
-                list = new CadModel().ToList(cadastro);
-                dgPrincipal.DataSource = list;
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Não foi possível listar" + ex);
-            }
-        }
-        */
         private void btAdd_Click(object sender, EventArgs e)
         {
             frmCad frmC = new frmCad();
@@ -108,7 +95,7 @@ namespace ControleDiario
             btEdit.Visible = true;
             
             Update();
-            cadastro.Data = dtPrincipal.Value;
+            cadastro.Date = dtPrincipal.Value;
             ToList();
 
 
@@ -119,23 +106,23 @@ namespace ControleDiario
             try
             {
                 cadastro.Id = Convert.ToInt32(dgPrincipal.CurrentRow.Cells[0].Value);
-                cadastro.Data = (DateTime)dgPrincipal.CurrentRow.Cells[1].Value;
-                cadastro.Tipo = Convert.ToString(dgPrincipal.CurrentRow.Cells[2].Value);
-                cadastro.Peso = Convert.ToInt32(dgPrincipal.CurrentRow.Cells[3].Value);
-                cadastro.Descricao = Convert.ToString(dgPrincipal.CurrentRow.Cells[4].Value);
-                cadastro.Feito = Convert.ToInt32(dgPrincipal.CurrentRow.Cells[5].Value);
+                cadastro.Date = (DateTime)dgPrincipal.CurrentRow.Cells[1].Value;
+                cadastro.Type = Convert.ToString(dgPrincipal.CurrentRow.Cells[2].Value);
+                cadastro.Importance = Convert.ToString(dgPrincipal.CurrentRow.Cells[3].Value);
+                cadastro.Description = Convert.ToString(dgPrincipal.CurrentRow.Cells[4].Value);
+                cadastro.Done = Convert.ToString(dgPrincipal.CurrentRow.Cells[5].Value);
                 int y = CadModel.Update(cadastro);
                 if (y > 0)
                 {
-                    MessageBox.Show("Atualizado com sucesso!");
+                    MessageBox.Show("Updated succesfully");
                 } else
                 {
-                    MessageBox.Show("Não inserido!");
+                    MessageBox.Show("Error");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Não inserido" + ex);
+                MessageBox.Show("Error" + ex);
             }
         }
         private void Mark()
@@ -143,7 +130,7 @@ namespace ControleDiario
             try
             {
 
-                cadastro.Feito = frmMark.done;
+                cadastro.Done = frmMark.done;
                 cadastro.Id = Convert.ToInt32(dgPrincipal.CurrentRow.Cells[0].Value);
 
                 int z = CadModel.Mark(cadastro);
@@ -155,6 +142,24 @@ namespace ControleDiario
                 {
                     MessageBox.Show("Error!");
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error" + ex);
+            }
+
+        }
+        private void Count()
+        {
+            try
+            {
+
+                cadastro.Date = dtPrincipal.Value;
+
+                double c = CadModel.Count(cadastro);
+
+                label3.Text = Convert.ToString(c) + "%";
+                
             }
             catch (Exception ex)
             {

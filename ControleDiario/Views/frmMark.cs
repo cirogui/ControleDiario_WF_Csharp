@@ -17,7 +17,7 @@ namespace ControleDiario.Views
     public partial class frmMark : Form
     {
         Control cadastro = new Control();
-        public static int done = 0;
+        public static string done = "";
         public frmMark()
         {
             InitializeComponent();
@@ -27,13 +27,32 @@ namespace ControleDiario.Views
         {
             if (radioButton1.Checked)
             {
-                done = 4;
+                done = "Perfectly done";
+            } 
+            else if (radioButton2.Checked)
+            {
+                done = "Done";   
+            } 
+            else if (radioButton3.Checked)
+            {
+                done = "Partially done";
+            } 
+            else if (radioButton4.Checked)
+            {
+                done = "Un done";
+            } 
+            else
+            {
+                MessageBox.Show("Select an option!");
             }
             this.Close();
             return;
             
         }
 
-        
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

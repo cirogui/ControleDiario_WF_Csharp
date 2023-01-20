@@ -36,6 +36,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.cbPeso = new System.Windows.Forms.ComboBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // dtPicker
@@ -54,14 +55,14 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(31, 13);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Tipo:";
+            this.label1.Text = "Type";
             // 
             // cbTipo
             // 
             this.cbTipo.FormattingEnabled = true;
             this.cbTipo.Items.AddRange(new object[] {
-            "Hábito",
-            "Tarefa"});
+            "Habit",
+            "Task"});
             this.cbTipo.Location = new System.Drawing.Point(15, 85);
             this.cbTipo.Name = "cbTipo";
             this.cbTipo.Size = new System.Drawing.Size(121, 21);
@@ -79,17 +80,17 @@
             this.lb2.AutoSize = true;
             this.lb2.Location = new System.Drawing.Point(12, 125);
             this.lb2.Name = "lb2";
-            this.lb2.Size = new System.Drawing.Size(58, 13);
+            this.lb2.Size = new System.Drawing.Size(63, 13);
             this.lb2.TabIndex = 4;
-            this.lb2.Text = "Descrição:";
+            this.lb2.Text = "Description:";
             // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(12, 261);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(113, 23);
             this.button1.TabIndex = 5;
-            this.button1.Text = "Cadastrar";
+            this.button1.Text = "Add";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -98,27 +99,38 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(12, 182);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 13);
+            this.label2.Size = new System.Drawing.Size(63, 13);
             this.label2.TabIndex = 7;
-            this.label2.Text = "Importância:";
+            this.label2.Text = "Importance:";
             // 
             // cbPeso
             // 
             this.cbPeso.FormattingEnabled = true;
             this.cbPeso.Items.AddRange(new object[] {
-            "Pouco importante",
-            "Importante",
-            "Muito importante"});
+            "Very important",
+            "Important",
+            "Not important"});
             this.cbPeso.Location = new System.Drawing.Point(12, 198);
             this.cbPeso.Name = "cbPeso";
             this.cbPeso.Size = new System.Drawing.Size(121, 21);
             this.cbPeso.TabIndex = 8;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(131, 261);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(118, 23);
+            this.button2.TabIndex = 9;
+            this.button2.Text = "Cancel";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // frmCad
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(300, 296);
+            this.ClientSize = new System.Drawing.Size(270, 296);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.cbPeso);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button1);
@@ -128,7 +140,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dtPicker);
             this.Name = "frmCad";
-            this.Text = "Cadastrar Hábito/Tarefa";
+            this.Text = "Add Habit/Task";
             this.Load += new System.EventHandler(this.frmCad_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -145,5 +157,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cbPeso;
+        private System.Windows.Forms.Button button2;
     }
 }

@@ -73,7 +73,7 @@
             this.dgPrincipal.Name = "dgPrincipal";
             this.dgPrincipal.ReadOnly = true;
             this.dgPrincipal.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgPrincipal.Size = new System.Drawing.Size(376, 150);
+            this.dgPrincipal.Size = new System.Drawing.Size(513, 150);
             this.dgPrincipal.TabIndex = 2;
             this.dgPrincipal.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgPrincipal_CellClick);
             this.dgPrincipal.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
@@ -81,7 +81,7 @@
             // 
             // btAdd
             // 
-            this.btAdd.Location = new System.Drawing.Point(397, 116);
+            this.btAdd.Location = new System.Drawing.Point(535, 116);
             this.btAdd.Name = "btAdd";
             this.btAdd.Size = new System.Drawing.Size(101, 23);
             this.btAdd.TabIndex = 3;
@@ -92,7 +92,7 @@
             // btEdit
             // 
             this.btEdit.Enabled = false;
-            this.btEdit.Location = new System.Drawing.Point(397, 158);
+            this.btEdit.Location = new System.Drawing.Point(534, 158);
             this.btEdit.Name = "btEdit";
             this.btEdit.Size = new System.Drawing.Size(101, 23);
             this.btEdit.TabIndex = 4;
@@ -103,7 +103,7 @@
             // btDelete
             // 
             this.btDelete.Enabled = false;
-            this.btDelete.Location = new System.Drawing.Point(397, 243);
+            this.btDelete.Location = new System.Drawing.Point(535, 243);
             this.btDelete.Name = "btDelete";
             this.btDelete.Size = new System.Drawing.Size(101, 23);
             this.btDelete.TabIndex = 5;
@@ -117,7 +117,7 @@
             this.relatóriosToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(527, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(655, 24);
             this.menuStrip1.TabIndex = 6;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -156,7 +156,7 @@
             // btMark
             // 
             this.btMark.Enabled = false;
-            this.btMark.Location = new System.Drawing.Point(397, 199);
+            this.btMark.Location = new System.Drawing.Point(535, 199);
             this.btMark.Name = "btMark";
             this.btMark.Size = new System.Drawing.Size(101, 23);
             this.btMark.TabIndex = 9;
@@ -166,7 +166,7 @@
             // 
             // btSave
             // 
-            this.btSave.Location = new System.Drawing.Point(397, 158);
+            this.btSave.Location = new System.Drawing.Point(535, 158);
             this.btSave.Name = "btSave";
             this.btSave.Size = new System.Drawing.Size(101, 23);
             this.btSave.TabIndex = 10;
@@ -179,7 +179,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(527, 450);
+            this.ClientSize = new System.Drawing.Size(655, 450);
             this.Controls.Add(this.btSave);
             this.Controls.Add(this.btMark);
             this.Controls.Add(this.label3);

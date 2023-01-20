@@ -10,17 +10,19 @@ namespace ControleDiario.Entities
     public class Control
     {
         int id;
-        DateTime data;
-        string tipo;
-        int peso;
-        string descricao;
-        int feito;
+        DateTime date;
+        string type;
+        string importance;
+        string description;
+        string done;
+
 
         public int Id { get => id; set => id = value; }
-        public DateTime Data { get => data; set => data = value; }
-        public string Tipo { get => tipo; set => tipo = value; }
-        public int Peso { get => peso; set => peso = value; }
-        public string Descricao { get => descricao; set => descricao = value; }
-        public int Feito { get => feito; set => feito = value; }
+        public DateTime Date { get => date; set => date = value; }
+        public string Type { get => type; set => type = value; }
+        public string Importance { get => importance; set => importance = value; }
+        public string Description { get => description; set => description = value; }
+        public string Done { get => done; set => done = value; }
+
     }
 }
