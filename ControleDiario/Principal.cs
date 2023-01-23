@@ -24,12 +24,17 @@ namespace ControleDiario
             dtPrincipal.Value = DateTime.Today;
             ToList();
             Count();
+            UpdateProductivity();
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             cadastro.Date = dtPrincipal.Value;
+            btEdit.Enabled = false;
+            btMark.Enabled = false;
+            btDelete.Enabled = false;
             ToList();
+            Count();
         }
 
         private void ToList()
@@ -54,6 +59,8 @@ namespace ControleDiario
         {
             frmCad frmC = new frmCad();
             frmC.ShowDialog();
+            Application.Restart();
+            
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -73,7 +80,8 @@ namespace ControleDiario
             frmMark frmM = new frmMark();
             frmM.ShowDialog();
             Mark();
-            ToList();
+            Application.Restart();
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -95,9 +103,8 @@ namespace ControleDiario
             btEdit.Visible = true;
             
             Update();
-            cadastro.Date = dtPrincipal.Value;
-            ToList();
-
+            Application.Restart();  
+           
 
         }
 
@@ -158,7 +165,25 @@ namespace ControleDiario
 
                 double c = CadModel.Count(cadastro);
 
-                label3.Text = Convert.ToString(c) + "%";
+                if (c > 0)
+                {
+                    label3.Text = Convert.ToString(c) + "%";
+                    if (c > 100)
+                    {
+                        progressBar1.Value = 100;
+                    }
+                    else
+                    {
+                        progressBar1.Value = Convert.ToInt32(c);
+                    }               
+
+                } else
+                {
+                    label3.Text = "0%";
+                    progressBar1.Value = 0;
+                }
+
+                
                 
             }
             catch (Exception ex)
@@ -166,6 +191,44 @@ namespace ControleDiario
                 MessageBox.Show("Error" + ex);
             }
 
+        }
+
+        private void Delete()
+        {
+            cadastro.Id = Convert.ToInt32(dgPrincipal.CurrentRow.Cells[0].Value);
+            int d = CadModel.Delete(cadastro);
+            if (d > 0)
+            {
+                MessageBox.Show("Deleted!");
+            }
+            else
+            {
+                MessageBox.Show("Error!");
+            }
+        }
+
+        private void btDelete_Click(object sender, EventArgs e)
+        {
+            Delete();
+            Application.Restart();
+        }
+
+        private void UpdateProductivity()
+        {
+            int e = CadModel.UpdateProductivity(cadastro);
+            MessageBox.Show(Convert.ToString(e));
+            /* if (e > 0)
+            {
+
+                MessageBox.Show("Atualizado");
+            }
+            else
+            {
+
+                MessageBox.Show("Error");
+
+            }*/
+            
         }
     }
 }

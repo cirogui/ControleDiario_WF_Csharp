@@ -17,6 +17,7 @@ namespace ControleDiario.Entities
         string done;
 
 
+
         public int Id { get => id; set => id = value; }
         public DateTime Date { get => date; set => date = value; }
         public string Type { get => type; set => type = value; }

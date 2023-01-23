@@ -41,6 +41,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btMark = new System.Windows.Forms.Button();
             this.btSave = new System.Windows.Forms.Button();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.dgPrincipal)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -73,7 +74,7 @@
             this.dgPrincipal.Name = "dgPrincipal";
             this.dgPrincipal.ReadOnly = true;
             this.dgPrincipal.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgPrincipal.Size = new System.Drawing.Size(513, 150);
+            this.dgPrincipal.Size = new System.Drawing.Size(428, 150);
             this.dgPrincipal.TabIndex = 2;
             this.dgPrincipal.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgPrincipal_CellClick);
             this.dgPrincipal.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
@@ -81,7 +82,7 @@
             // 
             // btAdd
             // 
-            this.btAdd.Location = new System.Drawing.Point(535, 116);
+            this.btAdd.Location = new System.Drawing.Point(463, 116);
             this.btAdd.Name = "btAdd";
             this.btAdd.Size = new System.Drawing.Size(101, 23);
             this.btAdd.TabIndex = 3;
@@ -92,7 +93,7 @@
             // btEdit
             // 
             this.btEdit.Enabled = false;
-            this.btEdit.Location = new System.Drawing.Point(534, 158);
+            this.btEdit.Location = new System.Drawing.Point(462, 158);
             this.btEdit.Name = "btEdit";
             this.btEdit.Size = new System.Drawing.Size(101, 23);
             this.btEdit.TabIndex = 4;
@@ -103,12 +104,13 @@
             // btDelete
             // 
             this.btDelete.Enabled = false;
-            this.btDelete.Location = new System.Drawing.Point(535, 243);
+            this.btDelete.Location = new System.Drawing.Point(463, 243);
             this.btDelete.Name = "btDelete";
             this.btDelete.Size = new System.Drawing.Size(101, 23);
             this.btDelete.TabIndex = 5;
             this.btDelete.Text = "Delete";
             this.btDelete.UseVisualStyleBackColor = true;
+            this.btDelete.Click += new System.EventHandler(this.btDelete_Click);
             // 
             // menuStrip1
             // 
@@ -117,7 +119,7 @@
             this.relatóriosToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(655, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(596, 24);
             this.menuStrip1.TabIndex = 6;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -139,15 +141,15 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(12, 316);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(135, 20);
+            this.label2.Size = new System.Drawing.Size(128, 20);
             this.label2.TabIndex = 7;
-            this.label2.Text = "Percentage done:";
+            this.label2.Text = "Productivity level:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(175, 316);
+            this.label3.Location = new System.Drawing.Point(354, 316);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(23, 20);
             this.label3.TabIndex = 8;
@@ -156,7 +158,7 @@
             // btMark
             // 
             this.btMark.Enabled = false;
-            this.btMark.Location = new System.Drawing.Point(535, 199);
+            this.btMark.Location = new System.Drawing.Point(463, 199);
             this.btMark.Name = "btMark";
             this.btMark.Size = new System.Drawing.Size(101, 23);
             this.btMark.TabIndex = 9;
@@ -166,7 +168,7 @@
             // 
             // btSave
             // 
-            this.btSave.Location = new System.Drawing.Point(535, 158);
+            this.btSave.Location = new System.Drawing.Point(463, 158);
             this.btSave.Name = "btSave";
             this.btSave.Size = new System.Drawing.Size(101, 23);
             this.btSave.TabIndex = 10;
@@ -175,14 +177,22 @@
             this.btSave.Visible = false;
             this.btSave.Click += new System.EventHandler(this.btSave_Click);
             // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(157, 315);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(406, 23);
+            this.progressBar1.TabIndex = 11;
+            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(655, 450);
+            this.ClientSize = new System.Drawing.Size(596, 450);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.btSave);
             this.Controls.Add(this.btMark);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btDelete);
             this.Controls.Add(this.btEdit);
@@ -217,6 +227,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btMark;
         private System.Windows.Forms.Button btSave;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }
 

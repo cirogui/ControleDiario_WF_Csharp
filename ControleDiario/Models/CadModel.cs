@@ -36,5 +36,13 @@ namespace ControleDiario.Models
         {
             return new CadController().Count(cadastro);
         }
+        public static int Delete(Control cadastro)
+        {
+            return new CadController().Delete(cadastro);
+        }
+        public static int UpdateProductivity(Control cadastro)
+        {
+            return new CadController().UpdateProductivity(cadastro);
+        }
     }
 }
