@@ -24,7 +24,7 @@ namespace ControleDiario
             dtPrincipal.Value = DateTime.Today;
             ToList();
             Count();
-            UpdateProductivity();
+            //UpdateProductivity();
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
@@ -59,8 +59,9 @@ namespace ControleDiario
         {
             frmCad frmC = new frmCad();
             frmC.ShowDialog();
-            Application.Restart();
-            
+            ToList();
+            Count();
+
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -80,8 +81,9 @@ namespace ControleDiario
             frmMark frmM = new frmMark();
             frmM.ShowDialog();
             Mark();
-            Application.Restart();
-            
+            ToList();
+            Count();
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -103,8 +105,10 @@ namespace ControleDiario
             btEdit.Visible = true;
             
             Update();
-            Application.Restart();  
-           
+            //CountChange();
+            ToList();
+            Count();
+
 
         }
 
@@ -119,13 +123,13 @@ namespace ControleDiario
                 cadastro.Description = Convert.ToString(dgPrincipal.CurrentRow.Cells[4].Value);
                 cadastro.Done = Convert.ToString(dgPrincipal.CurrentRow.Cells[5].Value);
                 int y = CadModel.Update(cadastro);
-                if (y > 0)
+                /* if (y > 0)
                 {
                     MessageBox.Show("Updated succesfully");
                 } else
                 {
                     MessageBox.Show("Error");
-                }
+                }*/
             }
             catch (Exception ex)
             {
@@ -141,14 +145,14 @@ namespace ControleDiario
                 cadastro.Id = Convert.ToInt32(dgPrincipal.CurrentRow.Cells[0].Value);
 
                 int z = CadModel.Mark(cadastro);
-                if (z > 0)
+                /* if (z > 0)
                 {
                     MessageBox.Show("Marked!");
                 }
                 else
                 {
                     MessageBox.Show("Error!");
-                }
+                }*/
             }
             catch (Exception ex)
             {
@@ -163,27 +167,20 @@ namespace ControleDiario
 
                 cadastro.Date = dtPrincipal.Value;
 
-                double c = CadModel.Count(cadastro);
+                int c = CadModel.Count(cadastro);
 
                 if (c > 0)
                 {
                     label3.Text = Convert.ToString(c) + "%";
-                    if (c > 100)
-                    {
-                        progressBar1.Value = 100;
-                    }
-                    else
-                    {
-                        progressBar1.Value = Convert.ToInt32(c);
-                    }               
+                    progressBar1.Value = Convert.ToInt32(c);
 
                 } else
                 {
                     label3.Text = "0%";
                     progressBar1.Value = 0;
+                   
                 }
-
-                
+               
                 
             }
             catch (Exception ex)
@@ -197,38 +194,34 @@ namespace ControleDiario
         {
             cadastro.Id = Convert.ToInt32(dgPrincipal.CurrentRow.Cells[0].Value);
             int d = CadModel.Delete(cadastro);
-            if (d > 0)
+            /* if (d > 0)
             {
                 MessageBox.Show("Deleted!");
             }
             else
             {
                 MessageBox.Show("Error!");
-            }
+            }*/
         }
 
         private void btDelete_Click(object sender, EventArgs e)
         {
             Delete();
-            Application.Restart();
+            ToList();
+            Count();
         }
 
-        private void UpdateProductivity()
+        /* private void UpdateProductivity()
         {
             int e = CadModel.UpdateProductivity(cadastro);
             MessageBox.Show(Convert.ToString(e));
-            /* if (e > 0)
-            {
-
-                MessageBox.Show("Atualizado");
-            }
-            else
-            {
-
-                MessageBox.Show("Error");
-
-            }*/
             
-        }
+        } 
+
+        private void CountChange()
+        {
+            int f = CadModel.CountChange(cadastro);
+            MessageBox.Show("f");
+        }*/
     }
 }

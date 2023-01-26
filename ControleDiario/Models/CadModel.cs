@@ -19,11 +19,6 @@ namespace ControleDiario.Models
         {
             return new CadController().ToList(cadastro);
         }        
-        public List<Control> ToListAll()
-        {
-            return new CadController().ToListAll();
-        }
-
         public static int Update(Control cadastro)
         {
             return new CadController().Update(cadastro);
@@ -32,7 +27,7 @@ namespace ControleDiario.Models
         {
             return new CadController().Mark(cadastro);
         }
-        public static double Count(Control cadastro)
+        public static int Count(Control cadastro)
         {
             return new CadController().Count(cadastro);
         }
@@ -40,9 +35,10 @@ namespace ControleDiario.Models
         {
             return new CadController().Delete(cadastro);
         }
-        public static int UpdateProductivity(Control cadastro)
+        /* public static int UpdateProductivity(Control cadastro)
         {
             return new CadController().UpdateProductivity(cadastro);
-        }
+        } */
+
     }
 }
