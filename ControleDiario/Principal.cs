@@ -24,7 +24,6 @@ namespace ControleDiario
             dtPrincipal.Value = DateTime.Today;
             ToList();
             Count();
-            //UpdateProductivity();
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
@@ -58,6 +57,7 @@ namespace ControleDiario
         private void btAdd_Click(object sender, EventArgs e)
         {
             frmCad frmC = new frmCad();
+            frmC.passingLanguage = comboBox1.Text;
             frmC.ShowDialog();
             ToList();
             Count();
@@ -123,13 +123,7 @@ namespace ControleDiario
                 cadastro.Description = Convert.ToString(dgPrincipal.CurrentRow.Cells[4].Value);
                 cadastro.Done = Convert.ToString(dgPrincipal.CurrentRow.Cells[5].Value);
                 int y = CadModel.Update(cadastro);
-                /* if (y > 0)
-                {
-                    MessageBox.Show("Updated succesfully");
-                } else
-                {
-                    MessageBox.Show("Error");
-                }*/
+
             }
             catch (Exception ex)
             {
@@ -145,14 +139,7 @@ namespace ControleDiario
                 cadastro.Id = Convert.ToInt32(dgPrincipal.CurrentRow.Cells[0].Value);
 
                 int z = CadModel.Mark(cadastro);
-                /* if (z > 0)
-                {
-                    MessageBox.Show("Marked!");
-                }
-                else
-                {
-                    MessageBox.Show("Error!");
-                }*/
+
             }
             catch (Exception ex)
             {
@@ -194,14 +181,7 @@ namespace ControleDiario
         {
             cadastro.Id = Convert.ToInt32(dgPrincipal.CurrentRow.Cells[0].Value);
             int d = CadModel.Delete(cadastro);
-            /* if (d > 0)
-            {
-                MessageBox.Show("Deleted!");
-            }
-            else
-            {
-                MessageBox.Show("Error!");
-            }*/
+
         }
 
         private void btDelete_Click(object sender, EventArgs e)
@@ -211,17 +191,56 @@ namespace ControleDiario
             Count();
         }
 
-        /* private void UpdateProductivity()
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int e = CadModel.UpdateProductivity(cadastro);
-            MessageBox.Show(Convert.ToString(e));
-            
-        } 
+            if (comboBox1.Text == "Português")
+            {
+                arquivoToolStripMenuItem.Text = "Arquivo";
+                relatóriosToolStripMenuItem.Text = "Relatórios";
+                addToolStripMenuItem.Text = "Adicionar";
+                exitToolStripMenuItem.Text = "Sair";
+                label1.Text = "Hábitos e tarefas do dia:";
+                label4.Text = "Idioma";
+                btAdd.Text = "Adicionar";
+                btSave.Text = "Salvar";
+                btMark.Text = "Registrar";
+                btDelete.Text = "Excluir";
+                btEdit.Text = "Editar";
+                label2.Text = "Nível de produtividade:";
+                label1.Text = "Tipo";
+                
+                
+            } else
+            {
+                arquivoToolStripMenuItem.Text = "File";
+                relatóriosToolStripMenuItem.Text = "Reports";
+                addToolStripMenuItem.Text = "Add";
+                exitToolStripMenuItem.Text = "Exit";
+                label1.Text = "Today tasks and habits:";
+                label4.Text = "Language";
+                btAdd.Text = "Add";
+                btSave.Text = "Save";
+                btMark.Text = "Mark";
+                btDelete.Text = "Delete";
+                btEdit.Text = "Edit";
+                label2.Text = "Productivity level:";
+                label1.Text = "Type";
+            }
+        }
 
-        private void CountChange()
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int f = CadModel.CountChange(cadastro);
-            MessageBox.Show("f");
-        }*/
+            Application.Exit();
+        }
+
+        private void addToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCad frmC = new frmCad();
+            frmC.passingLanguage = comboBox1.Text;
+            frmC.ShowDialog();
+            ToList();
+            Count();
+        }
+
     }
 }
