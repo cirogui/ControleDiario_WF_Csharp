@@ -262,7 +262,7 @@ namespace ControleDiario.Controllers
                 cn.Parameters.Add("date", SqlDbType.DateTime).Value = DateTime.Today;
                 int habitqtd = Convert.ToInt32(cn.ExecuteScalar());
 
-                if(habitqtd > 0)
+                if(habitqtd == 0)
                 {
                     cn.CommandText = "SELECT * from registros5 WHERE type = 'Habit' AND date = @date";
                     cn.Parameters.Add("date", SqlDbType.DateTime).Value = DateTime.Today.AddDays(-1);
@@ -281,13 +281,11 @@ namespace ControleDiario.Controllers
                             dado.Type = Convert.ToString(dr["type"]);
                             dado.Importance = Convert.ToString(dr["importance"]);
                             dado.Description = Convert.ToString(dr["description"]);
-                            dado.Done = Convert.ToString(dr["done"]);
-                            cn.CommandText = "INSERT INTO registros5 ([date], [type], [importance], [description], [done]) VALUES (@date, @type, @importance, @description, @done)";
+                            cn.CommandText = "INSERT INTO registros5 ([date], [type], [importance], [description], [done]) VALUES (@date, @type, @importance, @description, 'Un done')";
                             cn.Parameters.Add("date", SqlDbType.DateTime).Value = dado.Date;
                             cn.Parameters.Add("type", SqlDbType.VarChar).Value = dado.Type;
                             cn.Parameters.Add("importance", SqlDbType.VarChar).Value = dado.Importance;
                             cn.Parameters.Add("description", SqlDbType.VarChar).Value = dado.Description;
-                            cn.Parameters.Add("done", SqlDbType.VarChar).Value = dado.Done;
                         }
 
                     }
