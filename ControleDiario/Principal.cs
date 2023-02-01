@@ -105,7 +105,6 @@ namespace ControleDiario
             btEdit.Visible = true;
             
             Update();
-            //CountChange();
             ToList();
             Count();
 
@@ -242,5 +241,11 @@ namespace ControleDiario
             Count();
         }
 
+        private void Principal_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'controlediarioDataSet.produtividade2' table. You can move, or remove it, as needed.
+            this.produtividade2TableAdapter.Fill(this.controlediarioDataSet.produtividade2);
+
+        }
     }
 }
