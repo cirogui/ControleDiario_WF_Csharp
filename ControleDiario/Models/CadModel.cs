@@ -35,6 +35,10 @@ namespace ControleDiario.Models
         {
             return new CadController().Delete(cadastro);
         }
+        public static int RepeatHabit(Control cadastro)
+        {
+            return new CadController().RepeatHabit(cadastro);
+        }
 
     }
 }
