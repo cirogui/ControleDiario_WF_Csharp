@@ -140,7 +140,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dtPicker);
             this.Name = "frmCad";
-            this.Text = "z";
+            this.Text = "Add Habit/Task";
             this.Load += new System.EventHandler(this.frmCad_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

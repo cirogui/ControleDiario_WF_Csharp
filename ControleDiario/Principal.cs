@@ -22,8 +22,10 @@ namespace ControleDiario
         {
             InitializeComponent();
             dtPrincipal.Value = DateTime.Today;
+            RepeatHabit();
             ToList();
             Count();
+            
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
@@ -52,16 +54,6 @@ namespace ControleDiario
             {
                 MessageBox.Show("Error listing" + ex);
             }
-        }
-
-        private void btAdd_Click(object sender, EventArgs e)
-        {
-            frmCad frmC = new frmCad();
-            frmC.passingLanguage = comboBox1.Text;
-            frmC.ShowDialog();
-            ToList();
-            Count();
-
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -190,7 +182,7 @@ namespace ControleDiario
             Count();
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        /* private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBox1.Text == "Português")
             {
@@ -225,7 +217,7 @@ namespace ControleDiario
                 label2.Text = "Productivity level:";
                 label1.Text = "Type";
             }
-        }
+        } */
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -246,6 +238,41 @@ namespace ControleDiario
             // TODO: This line of code loads data into the 'controlediarioDataSet.produtividade2' table. You can move, or remove it, as needed.
             this.produtividade2TableAdapter.Fill(this.controlediarioDataSet.produtividade2);
 
+        }
+
+        private void RepeatHabit()
+        {
+            try
+            {
+                int qtd = CadModel.RepeatHabit(cadastro);
+                if (qtd > 0)
+                {
+                    MessageBox.Show("Ok");
+                }
+                else{
+                    MessageBox.Show("Fail");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Fail" + ex);
+            }
+        }
+
+        private void btAdd_Click_1(object sender, EventArgs e)
+        {
+            frmCad frmC = new frmCad();
+            //frmC.passingLanguage = comboBox1.Text;
+            frmC.ShowDialog();
+            ToList();
+            Count();
+        }
+
+        private void btDelete_Click_1(object sender, EventArgs e)
+        {
+            Delete();
+            ToList();
+            Count();
         }
     }
 }

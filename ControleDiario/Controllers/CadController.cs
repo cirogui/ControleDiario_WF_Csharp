@@ -258,44 +258,30 @@ namespace ControleDiario.Controllers
                 SqlCommand cn = new SqlCommand();
                 cn.CommandType = CommandType.Text;
                 con.Open();
-                cn.CommandText = "SELECT * from registros5 WHERE type = 'Habit' AND date = @date";
+                cn.CommandText = "SELECT COUNT (*) from registros5 WHERE type = 'Habit' AND date = @date";
                 cn.Parameters.Add("date", SqlDbType.DateTime).Value = DateTime.Today;
+                cn.Connection = con;
+
                 int habitqtd = Convert.ToInt32(cn.ExecuteScalar());
 
-                if(habitqtd == 0)
+                if (habitqtd == 0)
                 {
-                    cn.CommandText = "SELECT * from registros5 WHERE type = 'Habit' AND date = @date";
-                    cn.Parameters.Add("date", SqlDbType.DateTime).Value = DateTime.Today.AddDays(-1);
+                    cn.CommandText = "SELECT COUNT (*) from registros5 WHERE type = 'Habit' AND date = @date2";
+                    cn.Parameters.Add("date2", SqlDbType.DateTime).Value = DateTime.Today.AddDays(-1);
                     cn.Connection = con;
+                    int habitystd = Convert.ToInt32(cn.ExecuteScalar());    
 
-                    SqlDataReader dr;
-                    dr = cn.ExecuteReader();
-
-                    if (dr.HasRows)
+                    if (habitystd != 0)
                     {
-                        while (dr.Read())
-                        {
-                            Control dado = new Control();
-                            dado.Id = Convert.ToInt32(dr["id"]);
-                            dado.Date = Convert.ToDateTime(dr["date"]);
-                            dado.Type = Convert.ToString(dr["type"]);
-                            dado.Importance = Convert.ToString(dr["importance"]);
-                            dado.Description = Convert.ToString(dr["description"]);
-                            cn.CommandText = "INSERT INTO registros5 ([date], [type], [importance], [description], [done]) VALUES (@date, @type, @importance, @description, 'Un done')";
-                            cn.Parameters.Add("date", SqlDbType.DateTime).Value = dado.Date;
-                            cn.Parameters.Add("type", SqlDbType.VarChar).Value = dado.Type;
-                            cn.Parameters.Add("importance", SqlDbType.VarChar).Value = dado.Importance;
-                            cn.Parameters.Add("description", SqlDbType.VarChar).Value = dado.Description;
-                        }
-
+                        cn.CommandText = "INSERT INTO registros5 (date, type, importance, description, done) SELECT @date as date, type, importance, description, 'Un done' as done from registros5 WHERE type = 'Habit'";
+                        int qtd3 = cn.ExecuteNonQuery();
+                        return qtd3;
                     }
-                    int qtd = cn.ExecuteNonQuery();
-                    return qtd;
 
                 }
 
-
+                return 1;
             }
-        
+        }
     }
 }

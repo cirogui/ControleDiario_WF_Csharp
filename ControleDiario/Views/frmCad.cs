@@ -98,7 +98,7 @@ namespace ControleDiario.Views
         private void frmCad_Load(object sender, EventArgs e)
         {
 
-            if (language == "Português")
+            /* if (language == "Português")
             {
                 label1.Text = "Tipo:";
                 lb2.Text = "Descrição";
@@ -115,7 +115,7 @@ namespace ControleDiario.Views
                 cbPeso.Items.Add("Muito importante");
                 cbPeso.Items.Add("Importante");
                 cbPeso.Items.Add("Pouco importante");
-            }
+            }*/
         }
 
         private void button2_Click(object sender, EventArgs e)
