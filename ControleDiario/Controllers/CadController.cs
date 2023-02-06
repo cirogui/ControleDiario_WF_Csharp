@@ -80,8 +80,13 @@ namespace ControleDiario.Controllers
                 SqlCommand cn = new SqlCommand();
                 cn.CommandType = CommandType.Text;
                 con.Open();
-                cn.CommandText = "UPDATE registros5 SET data = @date, type = @type, importance = @importance, description = @description, done = @done WHERE id = @id";
+                cn.CommandText = "UPDATE registros5 SET date = @date, type = @type, importance = @importance, description = @description, done = @done WHERE id = @id";
+                cn.Parameters.Add("id", SqlDbType.Int).Value = cadastro.Id;
                 cn.Parameters.Add("date", SqlDbType.DateTime).Value = cadastro.Date;
+                cn.Parameters.Add("type", SqlDbType.VarChar).Value = cadastro.Type;
+                cn.Parameters.Add("importance", SqlDbType.VarChar).Value = cadastro.Importance;
+                cn.Parameters.Add("description", SqlDbType.VarChar).Value = cadastro.Description;
+                cn.Parameters.Add("done", SqlDbType.VarChar).Value = cadastro.Done;
 
                 cn.Connection = con;
 

@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.dtPrincipal = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.dgPrincipal = new System.Windows.Forms.DataGridView();
@@ -221,8 +221,9 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(366, 265);
+            this.label3.Location = new System.Drawing.Point(361, 264);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(23, 20);
             this.label3.TabIndex = 8;
@@ -286,12 +287,13 @@
             // btEdit
             // 
             this.btEdit.Enabled = false;
-            this.btEdit.Location = new System.Drawing.Point(453, 108);
+            this.btEdit.Location = new System.Drawing.Point(452, 108);
             this.btEdit.Name = "btEdit";
             this.btEdit.Size = new System.Drawing.Size(101, 23);
             this.btEdit.TabIndex = 16;
             this.btEdit.Text = "Edit";
             this.btEdit.UseVisualStyleBackColor = true;
+            this.btEdit.Click += new System.EventHandler(this.btEdit_Click);
             // 
             // btSave
             // 
@@ -302,6 +304,7 @@
             this.btSave.Text = "Save";
             this.btSave.UseVisualStyleBackColor = true;
             this.btSave.Visible = false;
+            this.btSave.Click += new System.EventHandler(this.btSave_Click_1);
             // 
             // btMark
             // 
@@ -312,6 +315,7 @@
             this.btMark.TabIndex = 18;
             this.btMark.Text = "Mark";
             this.btMark.UseVisualStyleBackColor = true;
+            this.btMark.Click += new System.EventHandler(this.btMark_Click);
             // 
             // btDelete
             // 
@@ -515,18 +519,18 @@
             // 
             // chart1
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
+            chartArea5.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea5);
             this.chart1.DataSource = this.produtividade2BindingSource;
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
+            legend5.Name = "Legend1";
+            this.chart1.Legends.Add(legend5);
             this.chart1.Location = new System.Drawing.Point(3, 133);
             this.chart1.Name = "chart1";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chart1.Series.Add(series2);
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series5.Legend = "Legend1";
+            series5.Name = "Series1";
+            this.chart1.Series.Add(series5);
             this.chart1.Size = new System.Drawing.Size(565, 249);
             this.chart1.TabIndex = 8;
             this.chart1.Text = "chart1";

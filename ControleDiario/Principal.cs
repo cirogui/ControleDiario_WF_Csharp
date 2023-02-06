@@ -68,15 +68,7 @@ namespace ControleDiario
 
 
         }
-        private void button1_Click(object sender, EventArgs e)
-        {
-            frmMark frmM = new frmMark();
-            frmM.ShowDialog();
-            Mark();
-            ToList();
-            Count();
 
-        }
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -91,16 +83,14 @@ namespace ControleDiario
             btSave.Visible = true;
         }
 
-        private void btSave_Click(object sender, EventArgs e)
+        private void btSave_Click_1(object sender, EventArgs e)
         {
             btSave.Visible = false;
             btEdit.Visible = true;
-            
+            dgPrincipal.ReadOnly = true;
             Update();
             ToList();
             Count();
-
-
         }
 
         private void Update()
@@ -175,12 +165,6 @@ namespace ControleDiario
 
         }
 
-        private void btDelete_Click(object sender, EventArgs e)
-        {
-            Delete();
-            ToList();
-            Count();
-        }
 
         /* private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -245,13 +229,7 @@ namespace ControleDiario
             try
             {
                 int qtd = CadModel.RepeatHabit(cadastro);
-                if (qtd > 0)
-                {
-                    MessageBox.Show("Ok");
-                }
-                else{
-                    MessageBox.Show("Fail");
-                }
+
             }
             catch (Exception ex)
             {
@@ -274,5 +252,21 @@ namespace ControleDiario
             ToList();
             Count();
         }
+
+        private void btEdit_Click(object sender, EventArgs e)
+        {
+            dgPrincipal.ReadOnly = false;
+        }
+
+        private void btMark_Click(object sender, EventArgs e)
+        {
+            frmMark frmM = new frmMark();
+            frmM.ShowDialog();
+            Mark();
+            ToList();
+            Count();
+        }
+
+
     }
 }
