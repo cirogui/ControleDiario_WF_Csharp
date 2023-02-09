@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.button2 = new System.Windows.Forms.Button();
-            this.cbPeso = new System.Windows.Forms.ComboBox();
+            this.cbIntensity = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.lb2 = new System.Windows.Forms.Label();
-            this.tbDesc = new System.Windows.Forms.TextBox();
-            this.cbTipo = new System.Windows.Forms.ComboBox();
+            this.tbNote = new System.Windows.Forms.TextBox();
+            this.cbFeeling = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.dtPicker = new System.Windows.Forms.DateTimePicker();
+            this.dtpAddMood = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // button2
@@ -47,18 +47,19 @@
             this.button2.TabIndex = 18;
             this.button2.Text = "Cancel";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // cbPeso
+            // cbIntensity
             // 
-            this.cbPeso.FormattingEnabled = true;
-            this.cbPeso.Items.AddRange(new object[] {
-            "Very important",
-            "Important",
-            "Not important"});
-            this.cbPeso.Location = new System.Drawing.Point(12, 132);
-            this.cbPeso.Name = "cbPeso";
-            this.cbPeso.Size = new System.Drawing.Size(121, 21);
-            this.cbPeso.TabIndex = 17;
+            this.cbIntensity.FormattingEnabled = true;
+            this.cbIntensity.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3"});
+            this.cbIntensity.Location = new System.Drawing.Point(12, 132);
+            this.cbIntensity.Name = "cbIntensity";
+            this.cbIntensity.Size = new System.Drawing.Size(121, 21);
+            this.cbIntensity.TabIndex = 17;
             // 
             // label2
             // 
@@ -77,6 +78,7 @@
             this.button1.TabIndex = 15;
             this.button1.Text = "Add";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // lb2
             // 
@@ -87,24 +89,29 @@
             this.lb2.TabIndex = 14;
             this.lb2.Text = "Intensity:";
             // 
-            // tbDesc
+            // tbNote
             // 
-            this.tbDesc.Location = new System.Drawing.Point(9, 189);
-            this.tbDesc.Multiline = true;
-            this.tbDesc.Name = "tbDesc";
-            this.tbDesc.Size = new System.Drawing.Size(237, 103);
-            this.tbDesc.TabIndex = 13;
+            this.tbNote.Location = new System.Drawing.Point(9, 189);
+            this.tbNote.Multiline = true;
+            this.tbNote.Name = "tbNote";
+            this.tbNote.Size = new System.Drawing.Size(237, 103);
+            this.tbNote.TabIndex = 13;
             // 
-            // cbTipo
+            // cbFeeling
             // 
-            this.cbTipo.FormattingEnabled = true;
-            this.cbTipo.Items.AddRange(new object[] {
-            "Habit",
-            "Task"});
-            this.cbTipo.Location = new System.Drawing.Point(12, 76);
-            this.cbTipo.Name = "cbTipo";
-            this.cbTipo.Size = new System.Drawing.Size(121, 21);
-            this.cbTipo.TabIndex = 12;
+            this.cbFeeling.FormattingEnabled = true;
+            this.cbFeeling.Items.AddRange(new object[] {
+            "Hope",
+            "Anxiety",
+            "Sadness",
+            "Hapiness",
+            "Focus",
+            "Angry",
+            "Boredom"});
+            this.cbFeeling.Location = new System.Drawing.Point(12, 76);
+            this.cbFeeling.Name = "cbFeeling";
+            this.cbFeeling.Size = new System.Drawing.Size(121, 21);
+            this.cbFeeling.TabIndex = 12;
             // 
             // label1
             // 
@@ -115,14 +122,14 @@
             this.label1.TabIndex = 11;
             this.label1.Text = "Feeling:";
             // 
-            // dtPicker
+            // dtpAddMood
             // 
-            this.dtPicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtPicker.Location = new System.Drawing.Point(12, 21);
-            this.dtPicker.Name = "dtPicker";
-            this.dtPicker.Size = new System.Drawing.Size(113, 20);
-            this.dtPicker.TabIndex = 10;
-            this.dtPicker.Value = new System.DateTime(2023, 1, 12, 0, 0, 0, 0);
+            this.dtpAddMood.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpAddMood.Location = new System.Drawing.Point(12, 21);
+            this.dtpAddMood.Name = "dtpAddMood";
+            this.dtpAddMood.Size = new System.Drawing.Size(113, 20);
+            this.dtpAddMood.TabIndex = 10;
+            this.dtpAddMood.Value = new System.DateTime(2023, 1, 12, 0, 0, 0, 0);
             // 
             // frmCadMood
             // 
@@ -130,14 +137,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(273, 353);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.cbPeso);
+            this.Controls.Add(this.cbIntensity);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.lb2);
-            this.Controls.Add(this.tbDesc);
-            this.Controls.Add(this.cbTipo);
+            this.Controls.Add(this.tbNote);
+            this.Controls.Add(this.cbFeeling);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dtPicker);
+            this.Controls.Add(this.dtpAddMood);
             this.Name = "frmCadMood";
             this.Text = "frmCadMood";
             this.ResumeLayout(false);
@@ -148,13 +155,13 @@
         #endregion
 
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.ComboBox cbPeso;
+        private System.Windows.Forms.ComboBox cbIntensity;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label lb2;
-        private System.Windows.Forms.TextBox tbDesc;
-        private System.Windows.Forms.ComboBox cbTipo;
+        private System.Windows.Forms.TextBox tbNote;
+        private System.Windows.Forms.ComboBox cbFeeling;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker dtPicker;
+        private System.Windows.Forms.DateTimePicker dtpAddMood;
     }
 }

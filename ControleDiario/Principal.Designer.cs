@@ -59,18 +59,13 @@
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label7 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btEditMood = new System.Windows.Forms.Button();
             this.progressBar2 = new System.Windows.Forms.ProgressBar();
-            this.button2 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button3 = new System.Windows.Forms.Button();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.btSaveMood = new System.Windows.Forms.Button();
+            this.dgMood = new System.Windows.Forms.DataGridView();
+            this.btDeleteMood = new System.Windows.Forms.Button();
+            this.btAddMood = new System.Windows.Forms.Button();
+            this.dtpMood = new System.Windows.Forms.DateTimePicker();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.produtividade2BindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -89,7 +84,7 @@
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgMood)).BeginInit();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.produtividade2BindingSource)).BeginInit();
@@ -348,18 +343,13 @@
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.label7);
-            this.tabPage2.Controls.Add(this.button1);
+            this.tabPage2.Controls.Add(this.btEditMood);
             this.tabPage2.Controls.Add(this.progressBar2);
-            this.tabPage2.Controls.Add(this.button2);
-            this.tabPage2.Controls.Add(this.dataGridView1);
-            this.tabPage2.Controls.Add(this.button3);
-            this.tabPage2.Controls.Add(this.comboBox3);
-            this.tabPage2.Controls.Add(this.button4);
-            this.tabPage2.Controls.Add(this.label6);
-            this.tabPage2.Controls.Add(this.button5);
-            this.tabPage2.Controls.Add(this.label5);
-            this.tabPage2.Controls.Add(this.comboBox2);
-            this.tabPage2.Controls.Add(this.dateTimePicker1);
+            this.tabPage2.Controls.Add(this.btSaveMood);
+            this.tabPage2.Controls.Add(this.dgMood);
+            this.tabPage2.Controls.Add(this.btDeleteMood);
+            this.tabPage2.Controls.Add(this.btAddMood);
+            this.tabPage2.Controls.Add(this.dtpMood);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -372,132 +362,82 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(22, 315);
+            this.label7.Location = new System.Drawing.Point(22, 257);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(88, 20);
             this.label7.TabIndex = 15;
             this.label7.Text = "Mood level:";
             // 
-            // button1
+            // btEditMood
             // 
-            this.button1.Enabled = false;
-            this.button1.Location = new System.Drawing.Point(295, 180);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(101, 23);
-            this.button1.TabIndex = 21;
-            this.button1.Text = "Edit";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btEditMood.Enabled = false;
+            this.btEditMood.Location = new System.Drawing.Point(454, 134);
+            this.btEditMood.Name = "btEditMood";
+            this.btEditMood.Size = new System.Drawing.Size(101, 23);
+            this.btEditMood.TabIndex = 21;
+            this.btEditMood.Text = "Edit";
+            this.btEditMood.UseVisualStyleBackColor = true;
+            this.btEditMood.Click += new System.EventHandler(this.btEditMood_Click);
             // 
             // progressBar2
             // 
-            this.progressBar2.Location = new System.Drawing.Point(134, 311);
+            this.progressBar2.Location = new System.Drawing.Point(134, 253);
             this.progressBar2.Name = "progressBar2";
-            this.progressBar2.Size = new System.Drawing.Size(262, 23);
+            this.progressBar2.Size = new System.Drawing.Size(421, 23);
             this.progressBar2.TabIndex = 16;
             // 
-            // button2
+            // btSaveMood
             // 
-            this.button2.Location = new System.Drawing.Point(295, 180);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(101, 23);
-            this.button2.TabIndex = 24;
-            this.button2.Text = "Save";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Visible = false;
+            this.btSaveMood.Location = new System.Drawing.Point(454, 135);
+            this.btSaveMood.Name = "btSaveMood";
+            this.btSaveMood.Size = new System.Drawing.Size(101, 23);
+            this.btSaveMood.TabIndex = 24;
+            this.btSaveMood.Text = "Save";
+            this.btSaveMood.UseVisualStyleBackColor = true;
+            this.btSaveMood.Visible = false;
+            this.btSaveMood.Click += new System.EventHandler(this.btSaveMood_Click);
             // 
-            // dataGridView1
+            // dgMood
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(19, 140);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(250, 150);
-            this.dataGridView1.TabIndex = 5;
+            this.dgMood.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgMood.Location = new System.Drawing.Point(19, 66);
+            this.dgMood.Name = "dgMood";
+            this.dgMood.ReadOnly = true;
+            this.dgMood.Size = new System.Drawing.Size(411, 150);
+            this.dgMood.TabIndex = 5;
+            this.dgMood.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgMood_CellClick);
+            this.dgMood.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgMood_CellValueChanged);
             // 
-            // button3
+            // btDeleteMood
             // 
-            this.button3.Enabled = false;
-            this.button3.Location = new System.Drawing.Point(295, 221);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(101, 23);
-            this.button3.TabIndex = 23;
-            this.button3.Text = "Mark";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btDeleteMood.Enabled = false;
+            this.btDeleteMood.Location = new System.Drawing.Point(454, 195);
+            this.btDeleteMood.Name = "btDeleteMood";
+            this.btDeleteMood.Size = new System.Drawing.Size(101, 23);
+            this.btDeleteMood.TabIndex = 22;
+            this.btDeleteMood.Text = "Delete";
+            this.btDeleteMood.UseVisualStyleBackColor = true;
+            this.btDeleteMood.Click += new System.EventHandler(this.btDeleteMood_Click);
             // 
-            // comboBox3
+            // btAddMood
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5"});
-            this.comboBox3.Location = new System.Drawing.Point(165, 84);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(43, 21);
-            this.comboBox3.TabIndex = 4;
+            this.btAddMood.Location = new System.Drawing.Point(454, 68);
+            this.btAddMood.Name = "btAddMood";
+            this.btAddMood.Size = new System.Drawing.Size(101, 23);
+            this.btAddMood.TabIndex = 20;
+            this.btAddMood.Text = "Add";
+            this.btAddMood.UseVisualStyleBackColor = true;
+            this.btAddMood.Click += new System.EventHandler(this.btAddMood_Click);
             // 
-            // button4
+            // dtpMood
             // 
-            this.button4.Enabled = false;
-            this.button4.Location = new System.Drawing.Point(295, 265);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(101, 23);
-            this.button4.TabIndex = 22;
-            this.button4.Text = "Delete";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(162, 67);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(46, 13);
-            this.label6.TabIndex = 3;
-            this.label6.Text = "Intensity";
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(295, 138);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(101, 23);
-            this.button5.TabIndex = 20;
-            this.button5.Text = "Add";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(19, 66);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(49, 13);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "Feelings:";
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "Anxiety",
-            "Sadness",
-            "Happiness",
-            "Hope",
-            "Focus",
-            "Angry",
-            "Boredom"});
-            this.comboBox2.Location = new System.Drawing.Point(19, 85);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 21);
-            this.comboBox2.TabIndex = 1;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(19, 19);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(121, 20);
-            this.dateTimePicker1.TabIndex = 0;
-            this.dateTimePicker1.Value = new System.DateTime(2023, 1, 29, 0, 0, 0, 0);
+            this.dtpMood.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpMood.Location = new System.Drawing.Point(19, 19);
+            this.dtpMood.Name = "dtpMood";
+            this.dtpMood.Size = new System.Drawing.Size(121, 20);
+            this.dtpMood.TabIndex = 0;
+            this.dtpMood.Value = new System.DateTime(2023, 1, 29, 0, 0, 0, 0);
+            this.dtpMood.ValueChanged += new System.EventHandler(this.dtpMood_ValueChanged);
             // 
             // tabPage3
             // 
@@ -636,7 +576,7 @@
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgMood)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
@@ -666,12 +606,8 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DataGridView dgMood;
+        private System.Windows.Forms.DateTimePicker dtpMood;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Button btEdit;
         private System.Windows.Forms.Button btSave;
@@ -680,12 +616,11 @@
         private System.Windows.Forms.Button btAdd;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btEditMood;
         private System.Windows.Forms.ProgressBar progressBar2;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btSaveMood;
+        private System.Windows.Forms.Button btDeleteMood;
+        private System.Windows.Forms.Button btAddMood;
         private System.Windows.Forms.ComboBox comboBox6;
         private System.Windows.Forms.ComboBox comboBox5;
         private System.Windows.Forms.Label label11;

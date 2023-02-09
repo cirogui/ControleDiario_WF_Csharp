@@ -32,8 +32,6 @@ namespace ControleDiario.Views
         private void save()
         {
 
-
-
             try
             {
                  if (cbTipo.Text != "" ^ tbDesc.Text != "" ^ cbPeso.Text != "")

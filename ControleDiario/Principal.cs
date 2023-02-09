@@ -12,22 +12,27 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 using Control = ControleDiario.Entities.Control;
+using Mood = ControleDiario.Entities.Mood;
 
 namespace ControleDiario
 {
     public partial class Principal : Form
     {
         Control cadastro = new Control();
+        Mood cadastro2 = new Mood();
         public Principal()
         {
             InitializeComponent();
             dtPrincipal.Value = DateTime.Today;
+            dtpMood.Value = DateTime.Today; 
             RepeatHabit();
             ToList();
+            ToListMood();
             Count();
             
         }
 
+        //Evento mudança de valor do dtPicker Habit/Task
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             cadastro.Date = dtPrincipal.Value;
@@ -35,9 +40,23 @@ namespace ControleDiario
             btMark.Enabled = false;
             btDelete.Enabled = false;
             ToList();
+            ToListMood();
             Count();
         }
 
+
+        //Evento mudança de valor do Mood
+        private void dtpMood_ValueChanged(object sender, EventArgs e)
+        {
+            cadastro2.Date = dtpMood.Value;
+            btEditMood.Enabled = false;
+            btDeleteMood.Enabled = false;
+            ToList();
+            ToListMood();
+            Count();
+        }
+
+        // Listar registros no DataGrid Habit/Task
         private void ToList()
         {
             try
@@ -56,20 +75,50 @@ namespace ControleDiario
             }
         }
 
+
+        // Listar registros no DataGrid Mood
+        private void ToListMood()
+        {
+            try
+            {
+                cadastro2.Date = dtpMood.Value;
+                List<Mood> list2 = new List<Mood>();
+                list2 = new MoodModel().ToListMood(cadastro2);
+                dgMood.DataSource = list2;
+                dgMood.Columns[0].Visible = false;
+                dgMood.Columns[1].Visible = false;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error listing" + ex);
+            }
+        }
+
+
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
+
+        // Evento ao clicar numa célula do DataGrid Habit/Task
         private void dgPrincipal_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             btEdit.Enabled = true;
             btMark.Enabled = true;
             btDelete.Enabled = true;
-
-
         }
 
 
+        // Evento ao clicar numa célula do DataGrid Mood
+        private void dgMood_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btEditMood.Enabled = true;
+            btDeleteMood.Enabled = true;
+        }
+
+
+        //Evento ao clilar no botão Edit do Habit/Task
         private void button2_Click(object sender, EventArgs e)
         {
 
@@ -77,12 +126,44 @@ namespace ControleDiario
 
         }
 
+
+
+        // Evento ao clicar no botão Edit do Habit/Task
+        private void btEdit_Click(object sender, EventArgs e)
+        {
+            dgPrincipal.ReadOnly = false;
+        }
+
+
+        // Evento ao clicar no botão Edit do Mood
+        private void btEditMood_Click(object sender, EventArgs e)
+        {
+            dgMood.ReadOnly = false;
+        }
+
+
+        // Evento ao modificar o conteúdo de uma célula do DataGrid Habit/Task
         private void dgPrincipal_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             btEdit.Visible = false;
             btSave.Visible = true;
         }
 
+
+        // Evento ao modificar o conteúdo de uma célula do DataGrid Mood
+        private void dgMood_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            btEditMood.Visible = false;
+            btSaveMood.Visible = true;
+        }
+
+
+
+
+
+
+
+        // Evento ao clicar no botão Save do Habit/Task
         private void btSave_Click_1(object sender, EventArgs e)
         {
             btSave.Visible = false;
@@ -93,6 +174,21 @@ namespace ControleDiario
             Count();
         }
 
+
+        // Evento ao clicar no botão Save do Mood
+        private void btSaveMood_Click(object sender, EventArgs e)
+        {
+            btSaveMood.Visible = false;
+            btEditMood.Visible = true;
+            dgMood.ReadOnly = true;
+            UpdateMood();
+            ToList();
+            ToListMood();
+            Count();
+        }
+
+
+        // Função Update Habit/Task
         private void Update()
         {
             try
@@ -111,6 +207,31 @@ namespace ControleDiario
                 MessageBox.Show("Error" + ex);
             }
         }
+
+
+
+        // Função Update Mood
+        private void UpdateMood()
+        {
+            try
+            {
+                cadastro2.Id = Convert.ToInt32(dgMood.CurrentRow.Cells[0].Value);
+                cadastro2.Date = (DateTime)dgMood.CurrentRow.Cells[1].Value;
+                cadastro2.Feelings = Convert.ToString(dgMood.CurrentRow.Cells[2].Value);
+                cadastro2.Intensity = Convert.ToInt32(dgMood.CurrentRow.Cells[3].Value);
+                cadastro2.Note = Convert.ToString(dgMood.CurrentRow.Cells[4].Value);
+                int z = MoodModel.UpdateMood(cadastro2);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error" + ex);
+            }
+        }
+
+
+
+        // Função registrar Habit/Task
         private void Mark()
         {
             try
@@ -128,6 +249,10 @@ namespace ControleDiario
             }
 
         }
+
+
+
+        // Função calcular produtividade Habit/Task
         private void Count()
         {
             try
@@ -158,10 +283,21 @@ namespace ControleDiario
 
         }
 
+
+        // Função delete Habit/Task
         private void Delete()
         {
             cadastro.Id = Convert.ToInt32(dgPrincipal.CurrentRow.Cells[0].Value);
             int d = CadModel.Delete(cadastro);
+
+        }
+
+
+        // Função delete Habit/Task
+        private void DeleteMood()
+        {
+            cadastro.Id = Convert.ToInt32(dgMood.CurrentRow.Cells[0].Value);
+            int e = MoodModel.DeleteMood(cadastro2);
 
         }
 
@@ -208,6 +344,9 @@ namespace ControleDiario
             Application.Exit();
         }
 
+
+
+        // Evento ao clicar no botão Add do menu do Habit/Task
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmCad frmC = new frmCad();
@@ -217,13 +356,27 @@ namespace ControleDiario
             Count();
         }
 
-        private void Principal_Load(object sender, EventArgs e)
-        {
-            // TODO: This line of code loads data into the 'controlediarioDataSet.produtividade2' table. You can move, or remove it, as needed.
-            this.produtividade2TableAdapter.Fill(this.controlediarioDataSet.produtividade2);
 
+        // Evento ao clicar no botão Add do Habit/Task
+        private void btAdd_Click_1(object sender, EventArgs e)
+        {
+            frmCad frmC = new frmCad();
+            //frmC.passingLanguage = comboBox1.Text;
+            frmC.ShowDialog();
+            ToList();
+            Count();
         }
 
+
+        // Evento ao clicar no botão Add do Mood
+        private void btAddMood_Click(object sender, EventArgs e)
+        {
+            frmCadMood frmCadM = new frmCadMood();
+            frmCadM.ShowDialog();
+            ToListMood();
+        }
+
+        // Função para repetir o hábito do dia anterior
         private void RepeatHabit()
         {
             try
@@ -237,15 +390,8 @@ namespace ControleDiario
             }
         }
 
-        private void btAdd_Click_1(object sender, EventArgs e)
-        {
-            frmCad frmC = new frmCad();
-            //frmC.passingLanguage = comboBox1.Text;
-            frmC.ShowDialog();
-            ToList();
-            Count();
-        }
 
+        // Evento ao clicar no botão Delete do Habit/Task
         private void btDelete_Click_1(object sender, EventArgs e)
         {
             Delete();
@@ -253,11 +399,16 @@ namespace ControleDiario
             Count();
         }
 
-        private void btEdit_Click(object sender, EventArgs e)
+
+        // Evento ao clicar no botão Delete do Mood
+        private void btDeleteMood_Click(object sender, EventArgs e)
         {
-            dgPrincipal.ReadOnly = false;
+            DeleteMood();
+            ToListMood();
         }
 
+
+        // Evento ao clicar no botão Mark do Habit/Task
         private void btMark_Click(object sender, EventArgs e)
         {
             frmMark frmM = new frmMark();
@@ -266,6 +417,33 @@ namespace ControleDiario
             ToList();
             Count();
         }
+
+
+
+
+
+
+
+        private void Principal_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'controlediarioDataSet.produtividade2' table. You can move, or remove it, as needed.
+            this.produtividade2TableAdapter.Fill(this.controlediarioDataSet.produtividade2);
+
+        }
+
+       
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     }
