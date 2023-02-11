@@ -29,6 +29,7 @@ namespace ControleDiario
             ToList();
             ToListMood();
             Count();
+            CountMood();
             
         }
 
@@ -54,6 +55,7 @@ namespace ControleDiario
             ToList();
             ToListMood();
             Count();
+            CountMood();
         }
 
         // Listar registros no DataGrid Habit/Task
@@ -172,6 +174,7 @@ namespace ControleDiario
             Update();
             ToList();
             Count();
+            CountMood();
         }
 
 
@@ -185,6 +188,7 @@ namespace ControleDiario
             ToList();
             ToListMood();
             Count();
+            CountMood();
         }
 
 
@@ -284,6 +288,31 @@ namespace ControleDiario
         }
 
 
+        // Função calcular nível Mood
+        private void CountMood()
+        {
+            try
+            {
+                cadastro2.Date = dtpMood.Value;
+
+                int e = MoodModel.CountMood(cadastro2);
+
+                if (e > 0)
+                {
+                    pbMood.Value = Convert.ToInt32(e);
+                }
+                else
+                {
+                    pbMood.Value = 50;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error" + ex);
+            }
+        }
+
+
         // Função delete Habit/Task
         private void Delete()
         {
@@ -374,6 +403,7 @@ namespace ControleDiario
             frmCadMood frmCadM = new frmCadMood();
             frmCadM.ShowDialog();
             ToListMood();
+            CountMood();
         }
 
         // Função para repetir o hábito do dia anterior
@@ -405,6 +435,7 @@ namespace ControleDiario
         {
             DeleteMood();
             ToListMood();
+            CountMood();
         }
 
 

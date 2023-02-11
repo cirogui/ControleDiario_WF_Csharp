@@ -106,6 +106,84 @@ namespace ControleDiario.Controllers
             }
         }
 
+        public int CountMood(Mood cadastro2)
+        {
+            using (SqlConnection con = new SqlConnection())
+            {
+
+                con.ConnectionString = Properties.Settings.Default.Setting;
+                SqlCommand cn = new SqlCommand();
+                cn.CommandType = CommandType.Text;
+                con.Open();
+
+
+                cn.CommandText = "SELECT COUNT(*) FROM mood2 WHERE date = @date AND intensity = '3' AND feelings = 'Hope' OR feelings = 'Hapiness' OR feelings = 'Focus'";
+                cn.Parameters.Add("date", SqlDbType.DateTime).Value = cadastro2.Date;
+                cn.Connection = con;
+
+                int up3 = (Convert.ToInt32(cn.ExecuteScalar())) * 3;
+
+                cn.CommandText = "SELECT COUNT(*) FROM mood2 WHERE date = @date AND intensity = '2' AND feelings = 'Hope' OR feelings = 'Hapiness' OR feelings = 'Focus'";
+                cn.Connection = con;
+
+                int up2 = (Convert.ToInt32(cn.ExecuteScalar())) * 2;
+
+                cn.CommandText = "SELECT COUNT(*) FROM mood2 WHERE date = @date AND intensity = '1' AND feelings = 'Hope' OR feelings = 'Hapiness' OR feelings = 'Focus'";
+                cn.Connection = con;
+
+                int up1 = (Convert.ToInt32(cn.ExecuteScalar())) * 1;
+
+
+
+
+
+
+                cn.CommandText = "SELECT COUNT(*) FROM mood2 WHERE date = @date AND intensity = '3' AND feelings = 'Anxiety' OR feelings = 'Sadness' OR feelings = 'Angry' OR feelings = 'Boredom'";
+                cn.Connection = con;
+
+                int down3 = (Convert.ToInt32(cn.ExecuteScalar())) * -3;
+
+
+                cn.CommandText = "SELECT COUNT(*) FROM mood2 WHERE date = @date AND intensity = '2' AND feelings = 'Anxiety' OR feelings = 'Sadness' OR feelings = 'Angry' OR feelings = 'Boredom'";
+                cn.Connection = con;
+
+                int down2 = (Convert.ToInt32(cn.ExecuteScalar())) * -2;
+
+                cn.CommandText = "SELECT COUNT(*) FROM mood2 WHERE date = @date AND intensity = '1' AND feelings = 'Anxiety' OR feelings = 'Sadness' OR feelings = 'Angry' OR feelings = 'Boredom'";
+                cn.Connection = con;
+
+                int down1 = (Convert.ToInt32(cn.ExecuteScalar())) * -1;
+
+
+
+                int resultMood = (up1 + up2 + up3) - (down1 + down2 + down3);
+
+
+
+                cn.CommandText = "SELECT COUNT(*) FROM moodlevel WHERE date = @date";
+                int resultLevel = Convert.ToInt32(cn.ExecuteScalar());
+                cn.Connection = con;
+
+                if (resultLevel == 0)
+                {
+                    cn.CommandText = "INSERT INTO moodlevel (date, mood) VALUES (@date, @mood)";
+                    cn.Parameters.Add("mood", SqlDbType.Int).Value = Convert.ToInt32(resultMood);
+                    cn.Connection = con;
+                    int qtd3 = cn.ExecuteNonQuery();
+                    return resultMood;
+                }
+                else
+                {
+                    cn.CommandText = "UPDATE moodlevel SET mood = @mood WHERE date = @date";
+                    cn.Parameters.Add("mood", SqlDbType.Int).Value = Convert.ToInt32(resultMood);
+                    cn.Connection = con;
+                    int qtd3 = cn.ExecuteNonQuery();
+                    return resultMood;
+                }
+
+            }
+        }
+
 
     }
    

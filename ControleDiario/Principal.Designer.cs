@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.dtPrincipal = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.dgPrincipal = new System.Windows.Forms.DataGridView();
@@ -60,7 +60,7 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label7 = new System.Windows.Forms.Label();
             this.btEditMood = new System.Windows.Forms.Button();
-            this.progressBar2 = new System.Windows.Forms.ProgressBar();
+            this.pbMood = new System.Windows.Forms.ProgressBar();
             this.btSaveMood = new System.Windows.Forms.Button();
             this.dgMood = new System.Windows.Forms.DataGridView();
             this.btDeleteMood = new System.Windows.Forms.Button();
@@ -344,7 +344,7 @@
             // 
             this.tabPage2.Controls.Add(this.label7);
             this.tabPage2.Controls.Add(this.btEditMood);
-            this.tabPage2.Controls.Add(this.progressBar2);
+            this.tabPage2.Controls.Add(this.pbMood);
             this.tabPage2.Controls.Add(this.btSaveMood);
             this.tabPage2.Controls.Add(this.dgMood);
             this.tabPage2.Controls.Add(this.btDeleteMood);
@@ -379,12 +379,12 @@
             this.btEditMood.UseVisualStyleBackColor = true;
             this.btEditMood.Click += new System.EventHandler(this.btEditMood_Click);
             // 
-            // progressBar2
+            // pbMood
             // 
-            this.progressBar2.Location = new System.Drawing.Point(134, 253);
-            this.progressBar2.Name = "progressBar2";
-            this.progressBar2.Size = new System.Drawing.Size(421, 23);
-            this.progressBar2.TabIndex = 16;
+            this.pbMood.Location = new System.Drawing.Point(134, 253);
+            this.pbMood.Name = "pbMood";
+            this.pbMood.Size = new System.Drawing.Size(421, 23);
+            this.pbMood.TabIndex = 16;
             // 
             // btSaveMood
             // 
@@ -459,18 +459,18 @@
             // 
             // chart1
             // 
-            chartArea5.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea5);
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
             this.chart1.DataSource = this.produtividade2BindingSource;
-            legend5.Name = "Legend1";
-            this.chart1.Legends.Add(legend5);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(3, 133);
             this.chart1.Name = "chart1";
-            series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series5.Legend = "Legend1";
-            series5.Name = "Series1";
-            this.chart1.Series.Add(series5);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart1.Series.Add(series1);
             this.chart1.Size = new System.Drawing.Size(565, 249);
             this.chart1.TabIndex = 8;
             this.chart1.Text = "chart1";
@@ -617,7 +617,7 @@
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btEditMood;
-        private System.Windows.Forms.ProgressBar progressBar2;
+        private System.Windows.Forms.ProgressBar pbMood;
         private System.Windows.Forms.Button btSaveMood;
         private System.Windows.Forms.Button btDeleteMood;
         private System.Windows.Forms.Button btAddMood;

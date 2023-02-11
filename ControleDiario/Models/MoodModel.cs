@@ -26,6 +26,10 @@ namespace ControleDiario.Models
         {
             return new MoodController().DeleteMood(cadastro2);
         }
+        public static int CountMood(Mood cadastro2)
+        {
+            return new MoodController().CountMood(cadastro2);
+        }
     }
 
 }
